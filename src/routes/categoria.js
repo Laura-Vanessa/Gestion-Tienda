@@ -38,7 +38,7 @@ router.get('/obtener-categoria', async (req, res) => {
 
     try {
         // Ejecutar la consulta para obtener todas las categorías
-        const result = await pool.request().query('SELECT * FROM Categorias');
+        const result = await pool.request().query('SELECT nombre_categoria FROM Categorias');
 
         // Verificar si se encontraron categorías
         if (result.recordset.length === 0) {

@@ -78,6 +78,7 @@ router.get('/orders', async (req, res) => {
         const result = await pool.request().query(`
             SELECT 
                 o.id_orden,
+				ho.id_historial,
                 o.fecha_orden,
                 o.estado,
                 o.total,
@@ -100,6 +101,8 @@ router.get('/orders', async (req, res) => {
                 Detalles_Orden do ON o.id_orden = do.id_orden
             LEFT JOIN 
                 Productos p ON do.id_producto = p.id_producto
+			LEFT JOIN
+				Historial_Ordenes ho ON ho.id_historial = o.id_orden
             ORDER BY 
                 o.id_orden, do.id_detalle;
         `);
