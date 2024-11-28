@@ -37,3 +37,6 @@ async function testQuery() {
         poolPromise.close();
     }
 }
+
+// Exportar tanto sql como la conexión
+module.exports = { sql, poolPromise };
